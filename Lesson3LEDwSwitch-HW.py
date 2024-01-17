@@ -37,6 +37,7 @@ try:
 			GPIO.output(Output_Pin, 0)
 except KeyboardInterrupt: # to exit the program properly while cleaning up the pins 
 	GPIO.cleanup()
+	print('That is it folks!')
 
 '''
 For the pull down resistor:

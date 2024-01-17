@@ -11,8 +11,11 @@ First let's try to read the input or the incoming signal into a GPIO pin:
 So if we read correctly, we should read a 1.
 '''
 
+input("This will read the digital input into Pin 40. Press Enter to Start. Press Ctrl + C to S top")
+
 # first,the GPIO library has to be imported on the machine
 import RPi.GPIO as GPIO
+from time import sleep
 
 # Need to say which numbering convention we're using for the pins, BSM(Broadcom) or Board
 GPIO.setmode(GPIO.BOARD)
@@ -25,25 +28,28 @@ Then we read the input.
 '''
 Input_Pin = 40
 GPIO.setup(Input_Pin, GPIO.IN)
-Read_Value = GPIO.input(Input_Pin)
-print('GPIO Input: ', Read_Value)
-
-# try hooking to GPIO 39, which is ground, instead of pin 1 with 3.3 v output then run the code. You shoud read a 0 this time
-
+try:
+	while True:
+		Read_Value = GPIO.input(Input_Pin)
+		print('GPIO Input: ', Read_Value)
+		sleep(0.2)
+except KeyboardInterrupt: # to exit the program properly while cleaning up the pins 
+	GPIO.cleanup()
+	
 '''
-# Now we can turn the LED on, by having the output on the pin set to True (then False! 1 and 0 can also be used)
-GPIO.output(11, True)
+while loop is used to let it run continuously, but to let keyboard interrupt get out of it, the whole loop is put inside a try/except.
+when it comes into the except condition, it wil clean the slate of the GPIO pins for the next round of calls
+try hooking to GPIO 39, which is ground, instead of pin 1 with 3.3 v output then run the code. You shoud read a 0 this time
+try no hooking to 39 or 1: this is a floating input and you might get a 0 or a 1. Not Good! 
+and this is why we need a pullup or pulldown resister with a push button to change signals instead of hoking and unhooking.
 
-# In order to put some delay in between running python commands
-import time
+For a pull up resistor:
+Pin 40 is connected to Pin 1 through a 10k ohm resistor and connected to ground through a switch. 
+When the switch is up, pin 40 see the voltage from pin 1 and reads 1 since there is no current going anywhere.
+When switch is down, the voltage from pin 1 sees ground and current flows, so pin 40 will read a 0.
+The above, when the switch is up it reads 1 so it's a pull up resistor.
 
-# Could also make it nicer:
-On = True
-Off = False
-GPIO.output(11, On)
-time.sleep(2)  # to delay for 2 sec then:
-GPIO.output(11, Off)
+For the pull down resistor:
+This is when Pin 40 is connected to ground through a resistor, and connected to pin 1 (voltage source) through a switch.
+When the switch is up, all pin 40 sees is ground so it would read 0 and when switch is down, current flows and it reads a 1, hence the name pull down resistor
 '''
-
-# At the very end, we will need to leave a clean slate of the pin so nothing we setup remains
-GPIO.cleanup()
