@@ -17,7 +17,8 @@ GPIO.setmode(GPIO.BOARD)
 '''
 Need to tell the pi whether our pin will function as input or output by providing the number and function.
 In our case:
-GPIO pin 40 is used to receive voltage, so it's an input pin. 
+GPIO pin 40 is used to receive voltage, so it's an input pin. There is a jumper from pin 1 that provides constant 3.3 v and is controlled by a switch to go to ground. 
+Pin 40 is in between, seeing either voltage or ground, depending on the switch. 
 GPIO pin 38 is used to send voltage, so it's an output pin.
 (These assignments should be undone once all work/project is completed so the pins will not have a preset function assigned to them.)
 '''
@@ -37,11 +38,11 @@ try:
 			GPIO.output(Output_Pin, 0)
 except KeyboardInterrupt: # to exit the program properly while cleaning up the pins 
 	GPIO.cleanup()
-	print('That is it folks!')
+	print(' Bam! That is it folks!')
 
 '''
 For the pull down resistor:
 This is when Pin 40 is connected to ground through a resistor, and connected to pin 1 (voltage source) through a switch.
-When the switch is up, all pin 40 sees is ground so it would read 0 and when switch is down, current flows and it reads a 1, hence the name pull down resistor.
+When the switch is up, all pin 40 sees is ground so it would read 0 and when switch is down, it sees the voltage source and reads a 1, hence the name pull down resistor.
 So we can put a condition on when pin 40 reads a 1, then the output pin 38 sends a high voltage to turn an LED on.
 '''
