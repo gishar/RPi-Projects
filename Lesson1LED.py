@@ -12,10 +12,10 @@ GPIO.setmode(GPIO.BOARD)
 # Need to tell the pi whether our pin will function as input or output by providing the number and function.
 # In our case, GPIO pin 11 is used to send voltage to the circuit, so it's an output pin.
 # This assignment has to be undone once all work/project is completed so the pins will not have a preset function assigned to them.
-GPIO.setup(11, GPIO.OUT)
+GPIO.setup(37, GPIO.OUT)
 
 # Now we can turn the LED on, by having the output on the pin set to True (then False! 1 and 0 can also be used)
-GPIO.output(11, True)
+GPIO.output(37, True)
 
 # In order to put some delay in between running python commands
 import time
@@ -23,9 +23,9 @@ import time
 # Could also make it nicer:
 On = True
 Off = False
-GPIO.output(11, On)
-time.sleep(2)  # to delay for 2 sec then:
-GPIO.output(11, Off)
+GPIO.output(37, On)
+time.sleep(3)  # to delay for 2 sec then:
+GPIO.output(37, Off)
 
 # At the very end, we will need to leave a clean slate of the pin so nothing we setup remains
 GPIO.cleanup()
