@@ -12,7 +12,8 @@ import time
 # This assignment has to be undone once all work/project is completed so the pins will not have a preset function assigned to them.
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.OUT)
+OutPin = 40
+GPIO.setup(OutPin, GPIO.OUT)
 
 # Now we can ask user for the n, the number of times to blink LED and then let it blink!
 while True:
@@ -26,9 +27,9 @@ while True:
 		n=0
 	
 	for i in np.linspace(1, n, n):
-		GPIO.output(11, 1)
+		GPIO.output(OutPin, 1)
 		time.sleep(0.5)
-		GPIO.output(11, 0)
+		GPIO.output(OutPin, 0)
 		time.sleep(0.2)
 	StopCue = input("Press Enter to play again, or Write 'stop' to finish the blink game: ")
 	if StopCue == "stop":
