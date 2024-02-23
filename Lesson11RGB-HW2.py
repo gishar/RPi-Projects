@@ -61,21 +61,21 @@ try:
 			RedDutyCycle = RedDutyCycle + 20
 			if RedDutyCycle > 100: RedDutyCycle = 0
 			OutRedPWM.ChangeDutyCycle(RedDutyCycle)
-			print('Red Light action!, RedDutyCycle = ', RedDutyCycle)
+			print('Go Red!  ', 'Red Duty Cycle = ', RedDutyCycle, '| Green Duty Cycle = ', GreenDutyCycle, '| Blue Duty Cycle = ', BlueDutyCycle)
 			sleep(0.05)
 
 		if GreenButtonStateNew == 1 and GreenButtonStateOld == 0:
 			GreenDutyCycle = GreenDutyCycle + 20
 			if GreenDutyCycle > 100: GreenDutyCycle = 0
 			OutGreenPWM.ChangeDutyCycle(GreenDutyCycle)
-			print('Green Light action! GreenDutyCycle = ', GreenDutyCycle)
+			print('Go Green!', 'Red Duty Cycle = ', RedDutyCycle, '| Green Duty Cycle = ', GreenDutyCycle, '| Blue Duty Cycle = ', BlueDutyCycle)
 			sleep(0.05)
 		
 		if BlueButtonStateNew == 1 and BlueButtonStateOld == 0:
 			BlueDutyCycle = BlueDutyCycle + 20
 			if BlueDutyCycle > 100: BlueDutyCycle = 0
 			OutBluePWM.ChangeDutyCycle(BlueDutyCycle)
-			print('Blue Light action! BlueDutyCycle = ', BlueDutyCycle)
+			print('Go Blue! ', 'Red Duty Cycle = ', RedDutyCycle, '| Green Duty Cycle = ', GreenDutyCycle, '| Blue Duty Cycle = ', BlueDutyCycle)
 		RedButtonStateOld = RedButtonStateNew
 		GreenButtonStateOld = GreenButtonStateNew
 		BlueButtonStateOld = BlueButtonStateNew
