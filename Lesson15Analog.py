@@ -10,7 +10,7 @@ try:
     while True:
         analogVal = ADC0834.getResult(0) # read input from channel 0 on the chip (which has the potentiometer hooked into! Change this and see how it works)
         print(analogVal)
-        sleep(0.2)
+        sleep(0.5)
     
 
 except KeyboardInterrupt:
