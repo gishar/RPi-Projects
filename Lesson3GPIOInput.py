@@ -11,7 +11,7 @@ First let's try to read the input or the incoming signal into a GPIO pin:
 So if we read correctly, we should read a 1.
 '''
 
-input("This will read the digital input into Pin 40. Press Enter to Start. Press Ctrl + C to S top")
+input("This will read the digital input into Pin 40. Press Enter to Start. Press Ctrl + C to Stop")
 
 # first,the GPIO library has to be imported on the machine
 import RPi.GPIO as GPIO
