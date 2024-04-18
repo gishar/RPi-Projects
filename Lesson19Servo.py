@@ -11,7 +11,7 @@ Somewhere around 1-2% of DC is an angle of 0. 10-15% is an angle of 180 degrees.
 import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BCM) # using broadcom method
-pwmPin = 17
+pwmPin = 4
 GPIO.setup(pwmPin, GPIO.OUT)
 pwm = GPIO.PWM(pwmPin, 50)
 pwm.start(0)

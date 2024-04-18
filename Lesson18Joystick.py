@@ -15,7 +15,7 @@ try:
         analogValY = ADC0834.getResult(1) # read input from channel 1 on the chip (which has the joystick y-direction reading, 0 to 255; it's a potentiometer afterall!)
         PushButtonState = GPIO.input(PushPin)
         print(analogValX, analogValY, PushButtonState)
-        sleep(0.1)
+        sleep(.1)
     
 except KeyboardInterrupt:
     GPIO.cleanup()
